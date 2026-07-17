@@ -2,15 +2,16 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Najmusama Birthday Surprise 🌹</title>
+
+<title>Happy Birthday Najmusama 🌹</title>
 
 <style>
 body{
 margin:0;
 height:100vh;
-background:linear-gradient(#05001a,#4b003b);
+background:linear-gradient(#050014,#40002f);
 color:white;
-font-family:Arial;
+font-family:Arial,sans-serif;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -23,13 +24,13 @@ padding:25px;
 }
 
 h1{
-font-size:40px;
-color:#ffd1dc;
-text-shadow:0 0 20px pink;
+font-size:38px;
+color:#ffd6e7;
+text-shadow:0 0 20px #ff69b4;
 }
 
 p{
-font-size:22px;
+font-size:20px;
 line-height:1.6;
 }
 
@@ -38,35 +39,45 @@ background:#ff4d88;
 color:white;
 border:none;
 padding:15px 35px;
-border-radius:50px;
+border-radius:40px;
 font-size:20px;
 }
 
 .rose{
-font-size:60px;
-animation:float 3s infinite;
+font-size:70px;
+animation:move 3s infinite;
 }
 
-@keyframes float{
-50%{transform:translateY(-20px);}
+@keyframes move{
+50%{
+transform:translateY(-20px);
+}
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="box" id="page">
+<div class="box" id="box">
 
 <div class="rose">🌹</div>
 
-<h1>Hello Najmusama</h1>
+<h1>A Secret Surprise</h1>
 
 <p>
-A special moment is waiting for you...<br><br>
+For<br>
+<b>Najmusama</b><br><br>
 August 19 🎂
 </p>
 
-<button onclick="ready()">Continue ✨</button>
+<p>
+A beautiful moment is waiting for you...
+</p>
+
+<button onclick="ready()">
+✨ Enter
+</button>
 
 </div>
 
@@ -75,18 +86,20 @@ August 19 🎂
 
 function ready(){
 
-document.getElementById("page").innerHTML=`
+document.getElementById("box").innerHTML=`
 
 <div class="rose">🌹✨🌹</div>
 
 <h1>Are You Ready?</h1>
 
 <p>
-Before the surprise begins...<br>
-Close your eyes and make one beautiful wish.
+Close your eyes for a second...<br>
+Make a beautiful wish.
 </p>
 
-<button onclick="wish()">I am ready 💖</button>
+<button onclick="wish()">
+💖 Yes
+</button>
 
 `;
 
@@ -95,16 +108,18 @@ Close your eyes and make one beautiful wish.
 
 function wish(){
 
-document.getElementById("page").innerHTML=`
+document.getElementById("box").innerHTML=`
 
 <h1>✨ 3... 2... 1... ✨</h1>
 
 <p>
-Your wish is made.<br><br>
-Now the celebration begins...
+Your wish is made 🌙<br><br>
+The birthday surprise begins...
 </p>
 
-<button onclick="birthday()">Open Surprise 🎉</button>
+<button onclick="birthday()">
+🎉 Open
+</button>
 
 `;
 
@@ -113,18 +128,22 @@ Now the celebration begins...
 
 function birthday(){
 
-document.getElementById("page").innerHTML=`
+document.getElementById("box").innerHTML=`
 
-<h1>🎂 Happy Birthday Najmusama 🎂</h1>
+<div class="rose">🎂🌹🎈</div>
+
+<h1>
+Happy Birthday Najmusama 🎂
+</h1>
 
 <p>
 May Allah bless your life with happiness,
-peace, success and beautiful memories. 🌹
+peace, success, and beautiful memories.
 </p>
 
-<div style="font-size:70px">
-🎂🕯️🌹
-</div>
+<p>
+🌹 — Barsadullah
+</p>
 
 `;
 
