@@ -1,1 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Happy Birthday Najmusama 🌹</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+background:linear-gradient(#080018,#45002f);
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+}
+
+.box{
+z-index:5;
+}
+
+h1{
+font-size:38px;
+color:#ffd6e7;
+text-shadow:0 0 20px pink;
+}
+
+p{
+font-size:20px;
+line-height:1.6;
+}
+
+button{
+background:#ff4d88;
+color:white;
+border:none;
+padding:15px 35px;
+border-radius:40px;
+font-size:20px;
+}
+
+.rose{
+position:fixed;
+top:-50px;
+font-size:35px;
+animation:fall 6s linear;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh) rotate(360deg);
+}
+}
+
+#fireworks{
+position:fixed;
+top:0;
+left:0;
+z-index:1;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="box" id="box">
+
+<h1>🌹 A Secret Surprise 🌹</h1>
+
+<p>
+A special moment is waiting for you...
+</p>
+
+<button onclick="ready()">
+✨ Start
+</button>
+
+</div>
+
+
+<script>
+
+// roses
+
+setInterval(()=>{
+
+let r=document.createElement("div");
+r.className="rose";
+r.innerHTML="🌹";
+r.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(r);
+
+setTimeout(()=>{
+r.remove();
+},6000);
+
+},500);
+
+
+// ready
+
+function ready(){
+
+box.innerHTML=`
+
+<h1>✨ Are You Ready? ✨</h1>
+
+<p>
+Something beautiful is coming...
+</p>
+
+<button onclick="wish()">
+💖 Yes
+</button>
+
+`;
+
+}
+
+
+// wish
+
+function wish(){
+
+box.innerHTML=`
+
+<h1>👀 Close Your Eyes</h1>
+
+<p>
+Make a wish...
+</p>
+
+<button onclick="countdown()">
+🌙 Done
+</button>
+
+`;
+
+}
+
+
+// countdown
+
+function countdown(){
+
+let n=3;
+
+let timer=setInterval(()=>{
+
+box.innerHTML=`
+
+<h1>✨ ${n} ✨</h1>
+
+`;
+
+n--;
+
+if(n==0){
+
+clearInterval(timer);
+birthday();
+
+}
+
+},1000);
+
+}
+
+
+// birthday
+
+function birthday(){
+
+box.innerHTML=`
+
+<h1>🎂 Happy Birthday Najmusama 🎂</h1>
+
+<p>
+May Allah bless your life with happiness,
+peace, success, and beautiful memories.
+
+<br><br>
+
+🌹 — Barsadullah
+
+</p>
+
+`;
+
+}
+
+
+// fireworks
+
+let canvas=document.getElementById("fireworks");
+let ctx=canvas.getContext("2d");
+
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+let dots=[];
+
+function boom(){
+
+let x=Math.random()*canvas.width;
+let y=Math.random()*300;
+
+for(let i=0;i<40;i++){
+
+dots.push({
+x:x,
+y:y,
+dx:(Math.random()-0.5)*8,
+dy:(Math.random()-0.5)*8,
+life:80
+});
+
+}
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+dots.forEach((d,i)=>{
+
+ctx.fillStyle="white";
+ctx.fillRect(d.x,d.y,3,3);
+
+d.x+=d.dx;
+d.y+=d.dy;
+d.life--;
+
+if(d.life<0)
+dots.splice(i,1);
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+setInterval(boom,700);
+animate();
+
+</script>
+
+</body>
+</html>
