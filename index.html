@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,25 +6,7 @@
 
 <title>Happy Birthday Najmusama 🌹</title>
 
-<style>.rose {
-  position: fixed;
-  top: -50px;
-  font-size: 30px;
-  animation: fall 6s linear infinite;
-  z-index: 999;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-50px) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-  
+<style>
 body{
 margin:0;
 height:100vh;
@@ -36,9 +19,10 @@ align-items:center;
 text-align:center;
 overflow:hidden;
 }
- 
+
 .box{
 padding:25px;
+z-index:5;
 }
 
 h1{
@@ -62,34 +46,49 @@ font-size:20px;
 }
 
 .rose{
-  font-size:40px;
-  position:fixed;
-  top:-50px;
-  animation:fall 6s linear forwards;
-  z-index:999;
+position:fixed;
+top:-50px;
+font-size:35px;
+animation:fall 6s linear;
 }
 
 @keyframes fall{
-  from{
-    transform:translateY(-50px) rotate(0deg);
-  }
-  to{
-    transform:translateY(100vh) rotate(360deg);
-  }
-  }
-  
+from{
+transform:translateY(-50px) rotate(0deg);
+}
+to{
+transform:translateY(100vh) rotate(360deg);
+}
+}
 
+#fireworks{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
+
+.message{
+animation:glow 2s infinite;
+}
+
+@keyframes glow{
+50%{
+text-shadow:0 0 20px white;
+}
+}
 </style>
 
 </head>
 
 <body>
 
+<canvas id="fireworks"></canvas>
+
 <div class="box" id="box">
 
-<div class="rose">🌹</div>
-
-<h1>A Secret Surprise</h1>
+<h1>🌹 A Secret Surprise 🌹</h1>
 
 <p>
 For<br>
@@ -98,7 +97,7 @@ August 19 🎂
 </p>
 
 <p>
-A beautiful moment is waiting for you...
+Something special is waiting for you...
 </p>
 
 <button onclick="ready()">
@@ -108,28 +107,36 @@ A beautiful moment is waiting for you...
 </div>
 
 
-<script>setInterval(function(){
-  let rose = document.createElement("div");
-  rose.className = "rose";
-  rose.innerHTML = "🌹";
-  rose.style.left = Math.random() * 100 + "vw";
-  document.body.appendChild(rose);
+<script>
 
-  setTimeout(function(){
-    rose.remove();
-  }, 6000);
-}, 500);
+// Roses
+
+setInterval(function(){
+
+let rose=document.createElement("div");
+rose.className="rose";
+rose.innerHTML="🌹";
+rose.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+rose.remove();
+},6000);
+
+},500);
+
+
+// Steps
 
 function ready(){
 
 document.getElementById("box").innerHTML=`
 
-<div class="rose">🌹✨🌹</div>
-
-<h1>Are You Ready?</h1>
+<h1>✨ Are You Ready? ✨</h1>
 
 <p>
-Close your eyes for a second...<br>
+Close your eyes for a moment...<br>
 Make a beautiful wish.
 </p>
 
@@ -149,8 +156,8 @@ document.getElementById("box").innerHTML=`
 <h1>✨ 3... 2... 1... ✨</h1>
 
 <p>
-Your wish is made 🌙<br><br>
-The birthday surprise begins...
+Your wish is made 🌙<br>
+A beautiful moment begins...
 </p>
 
 <button onclick="birthday()">
@@ -166,67 +173,30 @@ function birthday(){
 
 document.getElementById("box").innerHTML=`
 
-<div class="rose">🎂🌹🎈</div>
+<h1>🎂 Happy Birthday Najmusama 🎂</h1>
 
+<p class="message">
+
+May Allah bless your life with happiness,
+peace, success, and beautiful memories.
+
+<br><br>
+
+Keep smiling and always believe in yourself.
+
+<br><br>
+
+🌹 — Barsadullah
+
+</p>
 
 `;
 
 }
-setInterval(function(){
-let rose = document.createElement("div");
-rose.className = "rose";
-rose.innerHTML = "🌹";
-rose.style.left = Math.random() * 100 + "vw";
-rose.style.position = "fixed";
-rose.style.top = "-50px";
-document.body.appendChild(rose);
 
-setTimeout(function(){
-rose.remove();
-},6000);
 
-},500);
-  
-</script>
-<canvas> 
-         
+// Fireworks
 
-                   
-  
-         </canvas>
-
-<div id="fireworkMessage">
-  
-</div>
-
-<style>
-#fireworks {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-}
-
-#fireworkMessage {
-  display:none;
-  position:fixed;
-  top:45%;
-  width:100%;
-  text-align:center;
-  font-size:25px;
-  color:white;
-  font-weight:bold;
-  animation: glow 2s infinite;
-}
-
-@keyframes glow {
-  50% {text-shadow:0 0 20px pink;}
-}
-</style>
-
-<script>
 let canvas=document.getElementById("fireworks");
 let ctx=canvas.getContext("2d");
 
@@ -236,83 +206,52 @@ canvas.height=innerHeight;
 let particles=[];
 
 function firework(){
- let x=Math.random()*canvas.width;
- let y=Math.random()*canvas.height/2;
 
- for(let i=0;i<60;i++){
-  particles.push({
-   x:x,
-   y:y,
-   dx:(Math.random()-0.5)*8,
-   dy:(Math.random()-0.5)*8,
-   life:100
-  });
- }
+let x=Math.random()*canvas.width;
+let y=Math.random()*canvas.height/2;
+
+for(let i=0;i<50;i++){
+
+particles.push({
+x:x,
+y:y,
+dx:(Math.random()-0.5)*8,
+dy:(Math.random()-0.5)*8,
+life:100
+});
+
+}
+
 }
 
 function animate(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
 
- particles.forEach((p,i)=>{
-  ctx.fillStyle="white";
-  ctx.fillRect(p.x,p.y,3,3);
-  p.x+=p.dx;
-  p.y+=p.dy;
-  p.life--;
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  if(p.life<=0) particles.splice(i,1);
- });
+particles.forEach((p,i)=>{
 
- requestAnimationFrame(animate);
+ctx.fillStyle="white";
+ctx.fillRect(p.x,p.y,3,3);
+
+p.x+=p.dx;
+p.y+=p.dy;
+p.life--;
+
+if(p.life<=0){
+particles.splice(i,1);
+}
+
+});
+
+requestAnimationFrame(animate);
+
 }
 
 setInterval(firework,700);
+
 animate();
 
-setTimeout(()=>{
- document.getElementById("fireworkMessage").style.display="block";
-},3000);
 </script>
-  <div id="newWish">
-  ✨ Happy Birthday Najmusama 🎂 ✨
-  <br><br>
-  May Allah bless your life with happiness, peace, success, and countless beautiful memories.
-  <br><br>
-  Always keep your beautiful smile and believe in yourself.
-  <br><br>
-  🌹 — Barsadullah
-</div>
 
-<style>
-#newWish {
-  text-align: center;
-  font-size: 22px;
-  color: white;
-  margin: 20px;
-  animation: glow 2s infinite;
-}
-
-@keyframes glow {
-  50% {
-    text-shadow: 0 0 20px white;
-  }
-}
-</style>
-</style>
- <div>
-  <h1>✨ Happy Birthday Najmusama 🎂 ✨</h1>
-
-  <p>
-  May Allah bless your life with happiness, peace, success, and beautiful memories.
-  </p>
-
-  <p>
-  Always keep smiling and believe in yourself.
-  </p>
-
-  <p>
-  🌹 — Barsadullah
-  </p>
- </div> 
 </body>
 </html>
