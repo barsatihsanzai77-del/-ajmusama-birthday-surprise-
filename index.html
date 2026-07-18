@@ -191,7 +191,21 @@ peace, success, and beautiful memories.
 `;
 
 }
+setInterval(function(){
+let rose = document.createElement("div");
+rose.className = "rose";
+rose.innerHTML = "🌹";
+rose.style.left = Math.random() * 100 + "vw";
+rose.style.position = "fixed";
+rose.style.top = "-50px";
+document.body.appendChild(rose);
 
+setTimeout(function(){
+rose.remove();
+},6000);
+
+},500);
+  
 </script>
 
 </body>
