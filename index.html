@@ -62,15 +62,23 @@ font-size:20px;
 }
 
 .rose{
-font-size:70px;
-animation:move 3s infinite;
+  font-size:40px;
+  position:fixed;
+  top:-50px;
+  animation:fall 6s linear forwards;
+  z-index:999;
 }
 
-@keyframes move{
-50%{
-transform:translateY(-20px);
-}
-}
+@keyframes fall{
+  from{
+    transform:translateY(-50px) rotate(0deg);
+  }
+  to{
+    transform:translateY(100vh) rotate(360deg);
+  }
+  }
+  
+
 </style>
 
 </head>
