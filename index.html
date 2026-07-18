@@ -100,7 +100,17 @@ A beautiful moment is waiting for you...
 </div>
 
 
-<script>
+<script>setInterval(function(){
+  let rose = document.createElement("div");
+  rose.className = "rose";
+  rose.innerHTML = "🌹";
+  rose.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(rose);
+
+  setTimeout(function(){
+    rose.remove();
+  }, 6000);
+}, 500);
 
 function ready(){
 
