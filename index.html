@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday Najmusama 🌹</title>
 
 <style>
+
 body{
 margin:0;
 height:100vh;
-background:linear-gradient(#080018,#45002f);
+background:linear-gradient(#050014,#45002f);
 color:white;
-font-family:Arial;
+font-family:Arial,sans-serif;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -21,6 +23,7 @@ overflow:hidden;
 
 .box{
 z-index:5;
+padding:25px;
 }
 
 h1{
@@ -31,7 +34,7 @@ text-shadow:0 0 20px pink;
 
 p{
 font-size:20px;
-line-height:1.6;
+line-height:1.7;
 }
 
 button{
@@ -48,9 +51,13 @@ position:fixed;
 top:-50px;
 font-size:35px;
 animation:fall 6s linear;
+z-index:2;
 }
 
 @keyframes fall{
+from{
+transform:translateY(-50px) rotate(0deg);
+}
 to{
 transform:translateY(100vh) rotate(360deg);
 }
@@ -60,10 +67,23 @@ transform:translateY(100vh) rotate(360deg);
 position:fixed;
 top:0;
 left:0;
+width:100%;
+height:100%;
 z-index:1;
 }
 
+.message{
+animation:glow 2s infinite;
+}
+
+@keyframes glow{
+50%{
+text-shadow:0 0 25px white;
+}
+}
+
 </style>
+
 </head>
 
 <body>
@@ -78,43 +98,44 @@ z-index:1;
 A special moment is waiting for you...
 </p>
 
-<button onclick="ready()">
+<button onclick="start()">
 ✨ Start
 </button>
 
 </div>
-
-
 <script>
 
-// roses
+// Falling roses
 
-setInterval(()=>{
+setInterval(function(){
 
-let r=document.createElement("div");
-r.className="rose";
-r.innerHTML="🌹";
-r.style.left=Math.random()*100+"vw";
+let rose = document.createElement("div");
 
-document.body.appendChild(r);
+rose.className = "rose";
 
-setTimeout(()=>{
-r.remove();
+rose.innerHTML = "🌹";
+
+rose.style.left = Math.random() * 100 + "vw";
+
+document.body.appendChild(rose);
+
+setTimeout(function(){
+rose.remove();
 },6000);
 
 },500);
 
 
-// ready
+// Start button
 
-function ready(){
+function start(){
 
-box.innerHTML=`
+document.getElementById("box").innerHTML = `
 
 <h1>✨ Are You Ready? ✨</h1>
 
 <p>
-Something beautiful is coming...
+A beautiful surprise is waiting...
 </p>
 
 <button onclick="wish()">
@@ -126,16 +147,17 @@ Something beautiful is coming...
 }
 
 
-// wish
+// Wish button
 
 function wish(){
 
-box.innerHTML=`
+document.getElementById("box").innerHTML = `
 
 <h1>👀 Close Your Eyes</h1>
 
 <p>
-Make a wish...
+Make a beautiful wish<br>
+and press done when you finish.
 </p>
 
 <button onclick="countdown()">
@@ -147,42 +169,52 @@ Make a wish...
 }
 
 
-// countdown
+// Countdown
 
 function countdown(){
 
-let n=3;
+let number = 3;
 
-let timer=setInterval(()=>{
+let timer = setInterval(function(){
 
-box.innerHTML=`
+document.getElementById("box").innerHTML = `
 
-<h1>✨ ${n} ✨</h1>
+<h1>✨ ${number} ✨</h1>
 
 `;
 
-n--;
+number--;
 
-if(n==0){
+if(number < 0){
 
 clearInterval(timer);
+
 birthday();
 
-}function birthday(){
+}
 
-box.innerHTML=`
+},1000);
+
+}
+
+
+// Birthday screen
+
+function birthday(){
+
+document.getElementById("box").innerHTML = `
 
 <h1>🎂 Happy Birthday Najmusama 🎂</h1>
 
-<p>
+<p class="message">
 
 May Allah bless your life with happiness,
 peace, success, and beautiful memories.
 
 <br><br>
 
-<button onclick="showMessage()">
-💌 Open Message
+<button onclick="finalMessage()">
+💌 Open Special Message
 </button>
 
 </p>
@@ -190,15 +222,15 @@ peace, success, and beautiful memories.
 `;
 
 }
+// Final message
 
+function finalMessage(){
 
-function showMessage(){
-
-box.innerHTML=`
+document.getElementById("box").innerHTML = `
 
 <h1>🌹 A Special Message 🌹</h1>
 
-<p>
+<p class="message">
 
 Your name is my favorite word in the whole world.
 
@@ -216,55 +248,17 @@ Everything that belongs to you becomes special to me too.
 
 <br><br>
 
-You are a very important person in my life, inshallah.
+You are a very important person in my life,
+and inshallah you will always be remembered.
 
 <br><br>
 
-Happy Birthday, Najmusama 🎂🌹
+Happy Birthday Najmusama 🎂🌹
 
 <br><br>
 
-🌹 — Barsadullah
-
-</p>
-
-`;
-
-
-
-},1000);
-
-}
-
-
-// birthday
-
-
-
-
-// final message
-
-function showMessage(){
-
-box.innerHTML=`
-
-<h1>🌹 A Special Message 🌹</h1>
-
-<p class="message">
-
-Your name is my favorite word in the whole world.<br><br>
-
-Your voice is my favorite sound in this entire life.<br><br>
-
-Your happiness is one of my favorite prayers.<br><br>
-
-Everything that belongs to you becomes special to me too.<br><br>
-
-You are a very important person in my life, inshallah.<br><br>
-
-You truly deserve the world.<br><br>
-
-May Allah bless your life with happiness and success.
+May Allah bless your life with happiness,
+peace and success.
 
 <br><br>
 
@@ -277,61 +271,77 @@ May Allah bless your life with happiness and success.
 }
 
 
+// Fireworks
+
+let canvas = document.getElementById("fireworks");
+
+let ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
 
 
-// fireworks
+function firework(){
 
-let canvas=document.getElementById("fireworks");
-let ctx=canvas.getContext("2d");
+let x = Math.random()*canvas.width;
 
-canvas.width=innerWidth;
-canvas.height=innerHeight;
+let y = Math.random()*canvas.height/2;
 
-let dots=[];
 
-function boom(){
+for(let i=0;i<50;i++){
 
-let x=Math.random()*canvas.width;
-let y=Math.random()*300;
+particles.push({
 
-for(let i=0;i<40;i++){
-
-dots.push({
 x:x,
 y:y,
 dx:(Math.random()-0.5)*8,
 dy:(Math.random()-0.5)*8,
-life:80
+life:100
+
 });
 
 }
 
 }
+
 
 function animate(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
-dots.forEach((d,i)=>{
+
+particles.forEach((p,i)=>{
 
 ctx.fillStyle="white";
-ctx.fillRect(d.x,d.y,3,3);
 
-d.x+=d.dx;
-d.y+=d.dy;
-d.life--;
+ctx.fillRect(p.x,p.y,3,3);
 
-if(d.life<0)
-dots.splice(i,1);
+p.x += p.dx;
+p.y += p.dy;
+
+p.life--;
+
+
+if(p.life<=0){
+
+particles.splice(i,1);
+
+}
 
 });
+
 
 requestAnimationFrame(animate);
 
 }
 
-setInterval(boom,700);
+
+setInterval(firework,700);
+
 animate();
+
 
 </script>
 
