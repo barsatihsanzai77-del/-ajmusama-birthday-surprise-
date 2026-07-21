@@ -1,152 +1,129 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <html>
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday Najmusama 🌹</title>
+<title>Happy Birthday Najmusama 🎂</title>
 
-<style>.letter{
-background:rgba(255,255,255,0.95);
-color:#111;
-padding:18px;
-border-radius:20px;
-max-width:350px;
-margin:auto;
-box-shadow:0 0 25px pink;
-font-size:18px;
-line-height:1.4;
-}
+<style>
 
-.lollipop{
-position:fixed;
-font-size:45px;
-animation:floatCandy 4s infinite;
-z-index:1;
-}
-
-@keyframes floatCandy{
-50%{
-transform:translateY(-25px) rotate(10deg);
-}
-}
-
-.dark{
-color:#222;
-}
-
-.white{
+body{
+margin:0;
+overflow:hidden;
+height:100vh;
+background:linear-gradient(#16002b,#000);
+font-family:Arial,sans-serif;
 color:white;
-text-shadow:0 0 10px pink;
-}
-.cake{
-font-size:80px;
-animation:cakeGlow 2s infinite;
+text-align:center;
 }
 
-.balloons{
-font-size:45px;
-animation:float 3s infinite;
+.container{
+padding-top:50px;
 }
 
-.birthdayTitle{
-animation:appear 2s;
+h1{
+color:#ff8fcf;
+text-shadow:0 0 20px pink;
 }
 
-@keyframes cakeGlow{
-50%{
-transform:scale(1.1);
-text-shadow:0 0 30px pink;
-}
-}
-
-@keyframes float{
-50%{
-transform:translateY(-20px);
-}
+button{
+background:#ff4f81;
+color:white;
+border:0;
+padding:15px 35px;
+border-radius:30px;
+font-size:18px;
 }
 
-@keyframes appear{
+.scene{
+display:none;
+animation:show 2s;
+}
+
+@keyframes show{
 from{
 opacity:0;
-transform:scale(0.5);
+transform:scale(.5);
 }
 to{
 opacity:1;
 transform:scale(1);
 }
-  }
-body{
-margin:0;
-height:100vh;
-background:linear-gradient(#050014,#45002f);
-color:white;
-font-family:Arial,sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-overflow:hidden;
 }
 
-.box{
-z-index:5;
-padding:25px;
+.cake{
+font-size:100px;
+animation:bounce 1s infinite;
 }
 
-h1{
-font-size:38px;
-color:#ffd6e7;
-text-shadow:0 0 20px pink;
+@keyframes bounce{
+50%{
+transform:translateY(-20px);
 }
-
-p{
-font-size:20px;
-line-height:1.7;
-}
-
-button{
-background:#ff4d88;
-color:white;
-border:none;
-padding:15px 35px;
-border-radius:40px;
-font-size:20px;
 }
 
 .rose{
-position:fixed;
+position:absolute;
 top:-50px;
-font-size:35px;
-animation:fall 6s linear;
-z-index:2;
+font-size:25px;
+animation:fall linear infinite;
 }
 
 @keyframes fall{
-from{
-transform:translateY(-50px) rotate(0deg);
-}
 to{
-transform:translateY(100vh) rotate(360deg);
+transform:translateY(110vh);
 }
 }
 
-#fireworks{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:1;
+.fire{
+position:absolute;
+font-size:35px;
+animation:boom 1s infinite;
 }
 
-.message{
-animation:glow 2s infinite;
-}
-
-@keyframes glow{
+@keyframes boom{
 50%{
-text-shadow:0 0 25px white;
+transform:scale(1.5);
+opacity:.5;
+}
+}
+
+.balloon{
+font-size:70px;
+display:inline-block;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-40px);
+}
+}
+
+.letter{
+background:white;
+color:#222;
+margin:20px;
+padding:20px;
+border-radius:25px;
+box-shadow:0 0 25px pink;
+font-size:17px;
+line-height:1.6;
+}
+
+.dark{
+background:#050009;
+}
+
+.lollipop{
+font-size:60px;
+animation:spin 3s infinite;
+}
+
+@keyframes spin{
+50%{
+transform:rotate(20deg);
 }
 }
 
@@ -156,306 +133,233 @@ text-shadow:0 0 25px white;
 
 <body>
 
-<canvas id="fireworks"></canvas>
 
-<div class="box" id="box">
+<div class="container">
 
-<h1>🌹 A Secret Surprise 🌹</h1>
+<h1>✨ A Special Surprise For Najmusama ✨</h1>
 
-<p>
-A special moment is waiting for you...
-</p>
+<button onclick="start()">Open Your Surprise 🎁</button>
 
-<button onclick="start()">
-✨ Start
-</button>
+
+<div id="cakeScene" class="scene">
+
+<h2>Najmusama, your birthday cake is here 🎂</h2>
+
+<div class="cake">🎂</div>
+
+<h3>Cut the cake and make a wish ✨</h3>
 
 </div>
+
+
+
+<div id="countScene" class="scene">
+
+<h1>Are you ready? ❤️</h1>
+
+<h1 id="count">3</h1>
+
+</div>
+
+
+
+<div id="fireScene" class="scene">
+
+<h1>🎆 Celebration Time 🎆</h1>
+
+<div class="fire">🎆</div>
+
+<div class="fire">✨</div>
+
+<div class="fire">🎇</div>
+
+</div>
+
+
+
+<div id="balloonScene" class="scene">
+
+<h1>Pop the balloons 🎈</h1>
+
+<div class="balloon">🎈</div>
+<div class="balloon">🎈</div>
+<div class="balloon">🎈</div>
+
+</div>
+
+
+
+<div id="birthdayScene" class="scene">
+
+<h1>
+🎂 HAPPY BIRTHDAY NAJMUSAMA 🎂
+</h1>
+
+<p>
+May Allah bless your life with happiness, success and beautiful moments. 🤍
+</p>
+
+</div>
+
+
 <script>
-
-// Falling roses
-
-setInterval(function(){
-
-let rose = document.createElement("div");
-
-rose.className = "rose";
-
-rose.innerHTML = "🌹";
-
-rose.style.left = Math.random() * 100 + "vw";
-
-document.body.appendChild(rose);
-
-setTimeout(function(){
-rose.remove();
-},6000);
-
-},500);
-
-
-// Start button
 
 function start(){
 
-document.getElementById("box").innerHTML = `
-
-<h1>✨ Are You Ready? ✨</h1>
-
-<p>
-A beautiful surprise is waiting...
-</p>
-
-<button onclick="wish()">
-💖 Yes
-</button>
-
-`;
-
-}
+document.querySelector("button").style.display="none";
 
 
-// Wish button
-
-function wish(){
-
-document.getElementById("box").innerHTML = `
-
-<h1>👀 Close Your Eyes</h1>
-
-<p>
-Make a beautiful wish<br>
-and press done when you finish.
-</p>
-
-<button onclick="countdown()">
-🌙 Done
-</button>
-
-`;
-
-}
+document.getElementById("cakeScene").style.display="block";
 
 
-// Countdown
+setTimeout(()=>{
+document.getElementById("countScene").style.display="block";
+},5000);
 
-function countdown(){
 
-let number = 3;
+let n=3;
 
-let timer = setInterval(function(){
+let timer=setInterval(()=>{
 
-document.getElementById("box").innerHTML = `
+n--;
 
-<h1>✨ ${number} ✨</h1>
+document.getElementById("count").innerHTML=n;
 
-`;
-
-number--;
-
-if(number < 0){
+if(n==0){
 
 clearInterval(timer);
 
-birthday();
+document.getElementById("fireScene").style.display="block";
 
 }
 
 },1000);
 
+
+
+setTimeout(()=>{
+
+document.getElementById("balloonScene").style.display="block";
+
+},10000);
+
+
+
+setTimeout(()=>{
+
+document.getElementById("birthdayScene").style.display="block";
+
+},14000);
+
+
+
 }
 
 
-// Birthday screen
+// roses
 
-function birthday(){
+for(let i=0;i<20;i++){
 
-document.getElementById("box").innerHTML = `
+let r=document.createElement("div");
 
-<h1 class="birthdayTitle">
-🎂 Happy Birthday Najmusama 🎂
-</h1>
+r.className="rose";
 
-<div class="cake">
-🕯️<br>
-🎂
-</div>
+r.innerHTML="🌹";
 
-<div class="balloons">
-🎈 🎈 🎈
-</div>
+r.style.left=Math.random()*100+"%";
 
-<p class="message">
+r.style.animationDuration=(3+Math.random()*5)+"s";
 
-May Allah bless your life with happiness,
-peace, success, and beautiful memories.
+document.body.appendChild(r);
 
-<br><br>
+}
 
-✨ A new year of your life begins with new hopes and beautiful moments. ✨
 
-<br><br>
+</script><!-- FINAL MAGIC PARTY -->
 
-<button onclick="finalMessage()">
-💌 Open Special Message
-</button>
+<div id="magicScene" class="scene">
 
+<h1>🌙 Magical Birthday Party 🍭</h1>
+
+<div class="lollipop">🍭 🍭 🍭</div>
+
+<h2>🎂 🥤 🧸</h2>
+
+<p>
+Your birthday table is ready ✨
 </p>
 
-`;
-
-}
+</div>
 
 
-
-
-
-
-// Final message
-
-function finalMessage(){
-
-document.getElementById("box").innerHTML = `
-
-<h1 class="white">💌 A Special Letter 💌</h1>
+<div id="messageScene" class="scene">
 
 <div class="letter">
 
-<p class="dark">
+<h2>💌 A Special Message For Najmusama 🌹</h2>
 
-Your name is my favorite word in the whole world.
-
-<br><br>
-
-Your voice is my favorite sound in this entire life.
-
-<br><br>
+<p>
+Your name is one of my favorite words in this world.
 
 Your happiness is one of my favorite prayers.
 
-<br><br>
+The small things that belong to you become special because they remind me of your kindness and your beautiful personality.
 
-Everything that belongs to you becomes special to me too.
+You are a very important person, and I wish you happiness, success, and a bright future.
 
-<br><br>
+May Allah always protect you and fill your life with peace and joy.
 
-You are a very important person in my life, inshallah.
-
-<br><br>
-
-Happy Birthday Najmusama 🎂
-
-<br><br>
-
-🌹 — Barsadullah
-
+Happy 14th Birthday Najmusama 🎂✨
 </p>
 
 </div>
 
-`;
+</div>
 
 
-// lollipop background
+<div id="endScene" class="scene">
 
-setInterval(()=>{
+<h1>
+🎉✨ HAPPY BIRTHDAY NAJMUSAMA ✨🎉
+</h1>
 
-let candy=document.createElement("div");
+<h2>
+🎂 14 Years Old 🎂
+</h2>
 
-candy.className="lollipop";
+<p>
+Have a beautiful and memorable birthday 🌹
+</p>
 
-candy.innerHTML="🍭";
+</div>
 
-candy.style.left=Math.random()*100+"vw";
-candy.style.top=Math.random()*100+"vh";
 
-document.body.appendChild(candy);
+<script>
 
 setTimeout(()=>{
-candy.remove();
-},5000);
 
-},700);
+document.getElementById("magicScene").style.display="block";
 
+document.body.classList.add("dark");
 
-}
-
+},17000);
 
 
+setTimeout(()=>{
 
-// Fireworks
+document.getElementById("messageScene").style.display="block";
 
-let canvas = document.getElementById("fireworks");
-
-let ctx = canvas.getContext("2d");
-
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-
-let particles = [];
+},22000);
 
 
-function firework(){
+setTimeout(()=>{
 
-let x = Math.random()*canvas.width;
+document.getElementById("endScene").style.display="block";
 
-let y = Math.random()*canvas.height/2;
-
-
-for(let i=0;i<50;i++){
-
-particles.push({
-
-x:x,
-y:y,
-dx:(Math.random()-0.5)*8,
-dy:(Math.random()-0.5)*8,
-life:100
-
-});
-
-}
-
-}
-
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-
-particles.forEach((p,i)=>{
-
-ctx.fillStyle="white";
-
-ctx.fillRect(p.x,p.y,3,3);
-
-p.x += p.dx;
-p.y += p.dy;
-
-p.life--;
-
-
-if(p.life<=0){
-
-particles.splice(i,1);
-
-}
-
-});
-
-
-requestAnimationFrame(animate);
-
-}
-
-
-setInterval(firework,700);
-
-animate();
-
+},30000);
 
 </script>
+
 
 </body>
 </html>
