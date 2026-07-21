@@ -437,6 +437,83 @@ document.getElementById("giftOpen").style.display="block";
 }
 
 </script>
+<!-- GIFT SURPRISE SCENE -->
 
+<div id="giftScene" class="scene">
+
+<h1>🎁 One More Surprise For You 🎁</h1>
+
+<div class="gift" onclick="openGift()">
+🎁
+</div>
+
+<h2>Tap the gift ✨</h2>
+
+</div>
+
+
+<div id="giftOpen" class="scene">
+
+<h1>
+✨ Surprise! ✨
+</h1>
+
+<p>
+A little gift filled with happiness, smiles, and beautiful wishes for you 🌹
+</p>
+
+<div style="font-size:80px;">
+🌹🎂🍭🧸
+</div>
+
+</div>
+
+
+<style>
+
+.gift{
+font-size:100px;
+cursor:pointer;
+animation:shake 1s infinite;
+}
+
+@keyframes shake{
+
+25%{
+transform:rotate(10deg);
+}
+
+50%{
+transform:rotate(-10deg);
+}
+
+75%{
+transform:rotate(10deg);
+}
+
+}
+
+</style>
+
+
+<script>
+
+setTimeout(()=>{
+
+document.getElementById("giftScene").style.display="block";
+
+},35000);
+
+
+
+function openGift(){
+
+document.getElementById("giftScene").style.display="none";
+
+document.getElementById("giftOpen").style.display="block";
+
+}
+
+</script>
 </body>
 </html>
